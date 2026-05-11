@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar glass-panel">
+    <div class="nav-brand">
+        <i class='bx bx-layer'></i> SmartTask Pro
+    </div>
+    <div class="nav-user">
+        <span id="welcome-msg"></span>
+        <button id="logout-btn" class="btn btn-outline"><i class='bx bx-log-out'></i> Logout</button>
+    </div>
+</nav>
+
+<div class="dashboard-container">
+    <!-- Analytics Section -->
+    <section class="analytics-section">
+        <div class="stat-card glass-panel">
+            <div class="stat-icon"><i class='bx bx-task'></i></div>
+            <div class="stat-content">
+                <p>Total Tasks</p>
+                <h3 id="stat-total">0</h3>
+            </div>
+        </div>
+        <div class="stat-card glass-panel">
+            <div class="stat-icon success"><i class='bx bx-check-circle'></i></div>
+            <div class="stat-content">
+                <p>Completed</p>
+                <h3 id="stat-completed">0</h3>
+            </div>
+        </div>
+        <div class="stat-card glass-panel">
+            <div class="stat-icon warning"><i class='bx bx-time-five'></i></div>
+            <div class="stat-content">
+                <p>Pending</p>
+                <h3 id="stat-pending">0</h3>
+            </div>
+        </div>
+        <div class="stat-card glass-panel">
+            <div class="stat-icon primary"><i class='bx bx-line-chart'></i></div>
+            <div class="stat-content">
+                <p>Progress</p>
+                <h3 id="stat-percent">0%</h3>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" id="stat-progress-fill"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Add Task Form -->
+        <aside class="sidebar glass-panel">
+            <h3><i class='bx bx-plus-circle'></i> Add New Task</h3>
+            <form id="add-task-form">
+                <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" id="task-title" required placeholder="Task title">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="task-desc" rows="3" placeholder="Task description..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="task-priority">
+                        <option value="Low">Low</option>
+                        <option value="Medium" selected>Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Add Task</button>
+            </form>
+        </aside>
+
+        <!-- Task List -->
+        <section class="task-list-section glass-panel">
+            <div class="section-header">
+                <h3><i class='bx bx-list-ul'></i> Your Tasks</h3>
+                <div class="live-indicator"><span class="dot"></span> Live Updates</div>
+            </div>
+            <div id="tasks-container" class="tasks-container">
+                <!-- Tasks injected via JS -->
+                <div class="empty-state">Loading tasks...</div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
